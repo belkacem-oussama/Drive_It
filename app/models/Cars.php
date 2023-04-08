@@ -1,5 +1,10 @@
 <?php
 
+namespace App\models;
+use App\Utils\database;
+
+use PDO;
+
 class Cars{
     private $id;
     private $registration;
@@ -169,5 +174,19 @@ class Cars{
         $this->availability = $availability;
 
         return $this;
+    }
+
+    public function findAll(){
+        try{
+            $pdo = Database::getPDO();
+            $sql = 'SELECT * from `cars`';
+            $query =  $pdo->prepare($sql);
+            $query->execute();
+            $cars = $query->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+            echo 'Erreur : '.$e->getMessage();
+        }
+
+        return $cars;
     }
 }
