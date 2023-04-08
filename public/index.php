@@ -1,25 +1,22 @@
 <?php
+require_once '../vendor/autoload.php';
 
-require __DIR__ . '/../vendor/autoload.php';
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 
-$router = new AltoRouter;
+session_start();
 
-$router->setBasePath($_SERVER['BASE_URI']);
+$router = new AltoRouter();
+
+if (array_key_exists('BASE_URI', $_SERVER)) {
+    $router->setBasePath($_SERVER['BASE_URI']);
+} else {
+    $_SERVER['BASE_URI'] = '/';
+}
+
+require __DIR__ . '/../app/routes.php';
 
 $match = $router->match();
 
-if($match !== false) {
-	$routeInfos = $match['target'];
-
-    $controllerToUse = $routeInfos['controller'];
-    $methodToCall = $routeInfos['method'];
-
-    $urlParams = $match['params'];
-    
-    $controller = new $controllerToUse; 
-
-    $controller->$methodToCall($urlParams);
-} else {
-    $controller = new MainController; 
-    $controller->pageNotFound();
-}
+$dispatcher = new Dispatcher($match, '\App\controllers\MainController::pageNotFound');
+$dispatcher->dispatch();

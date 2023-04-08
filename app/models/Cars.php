@@ -1,7 +1,7 @@
 <?php
 
 namespace App\models;
-use App\Utils\database;
+use App\Utils\Database;
 
 use PDO;
 

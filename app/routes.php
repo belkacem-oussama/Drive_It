@@ -1,11 +1,13 @@
 <?php
 
+$controllersNamespace = '\App\controllers\\';
+
 $router->map(
     'GET', 
     '/',
     [
-      'controller'  => 'CarsController',
-      'method'      => 'showCarsList'
+      'method'      => 'showCarsList',
+      'controller'  => $controllersNamespace . 'CarsController'
     ],
-    'cars_list'
+    'cars-list'
 );
