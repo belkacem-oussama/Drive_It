@@ -15,9 +15,9 @@ CREATE TABLE `cars` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `cars` (`registration`,`brand`,`model`,`year`,`caution`,`price`,`availabilty`)
+INSERT INTO `cars` (`registration`,`brand`,`model`,`year`,`caution`,`price`,`availability`)
 VALUES
-('FB-046-BQ','Citroën','C3',2019,5000,20000,1),
+('FB-046-BQ','Citroën','C3',2019,5000,200,1),
 ('AB-123-CD','Peugeot','308',2018,5500,25000,1),
 ('EF-456-FG','Renault','Clio',2020,6000,22000,0),
 ('GH-789-HI','Toyota','Yaris',2017,6500,18000,1),
