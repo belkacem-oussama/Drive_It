@@ -11,3 +11,63 @@ $router->map(
     ],
     'home'
 );
+
+$router->map(
+    'GET', 
+    '/cars',
+    [
+      'method'      => 'cars',
+      'controller'  => $controllersNamespace . 'MainController'
+    ],
+    'cars'
+);
+
+$router->map(
+    'GET', 
+    '/dealer',
+    [
+      'method'      => 'dealer',
+      'controller'  => $controllersNamespace . 'MainController'
+    ],
+    'dealer'
+);
+
+$router->map(
+    'GET', 
+    '/repair',
+    [
+      'method'      => 'repair',
+      'controller'  => $controllersNamespace . 'MainController'
+    ],
+    'repair'
+);
+
+$router->map(
+    'GET', 
+    '/order_current',
+    [
+      'method'      => 'order_current',
+      'controller'  => $controllersNamespace . 'MainController'
+    ],
+    'order_current'
+);
+
+$router->map(
+    'GET', 
+    '/order_finish',
+    [
+      'method'      => 'order_finish',
+      'controller'  => $controllersNamespace . 'MainController'
+    ],
+    'order_finish'
+);
+
+$router->map(
+    'GET', 
+    '/order_to_come',
+    [
+      'method'      => 'order_to_come',
+      'controller'  => $controllersNamespace . 'MainController'
+    ],
+    'order_to_come'
+);

@@ -21,18 +21,18 @@
               Commandes
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">en cours</a></li>
-              <li><a class="dropdown-item" href="#">à venir</a></li>
-              <li><a class="dropdown-item" href="#">clôturées</a></li>
+              <li><a class="dropdown-item" href="/order_current">en cours</a></li>
+              <li><a class="dropdown-item" href="/order_to_come">à venir</a></li>
+              <li><a class="dropdown-item" href="/order_finish">clôturées</a></li>
             </ul>
           </li>
-          <a class="nav-link" aria-current="page" href="#">Réparation</a>
+          <a class="nav-link" aria-current="page" href="/repair">Réparation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Flotte</a>
+          <a class="nav-link" href="/cars">Flotte</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Concessions</a>
+          <a class="nav-link" href="/dealer">Concessions</a>
         </li>
       </ul>
     </div>
