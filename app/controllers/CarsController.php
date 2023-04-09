@@ -9,6 +9,5 @@ class CarsController extends CoreController{
         $car = new Cars;
         $cars = $car->findAll();
         $this->show('cars', ['cars' => $cars]);
-        dump($cars);
     }
 }
