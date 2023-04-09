@@ -11,6 +11,7 @@ class Cars{
     private $brand;
     private $model;
     private $year;
+    private $power;
     private $caution;
     private $price;
     private $availability;
@@ -117,6 +118,26 @@ class Cars{
     }
 
     /**
+     * Get the value of power
+     */ 
+    public function getPower()
+    {
+        return $this->power;
+    }
+
+    /**
+     * Set the value of power
+     *
+     * @return  self
+     */ 
+    public function setPower($power)
+    {
+        $this->power = $power;
+
+        return $this;
+    }
+    
+    /**
      * Get the value of caution
      */ 
     public function getCaution()
@@ -189,4 +210,5 @@ class Cars{
 
         return $cars;
     }
+
 }

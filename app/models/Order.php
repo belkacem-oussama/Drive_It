@@ -1,5 +1,10 @@
 <?php
 
+namespace App\models;
+use App\Utils\Database;
+
+use PDO;
+
 class Order{
     private $id;
     private $order_date;
@@ -8,6 +13,7 @@ class Order{
     private $km_start;
     private $km_end;
     private $comments;
+    private $status;
 
     /**
      * Get the value of id
@@ -147,5 +153,38 @@ class Order{
         $this->comments = $comments;
 
         return $this;
+    }
+
+    /**
+     * Get the value of status
+     */ 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     *
+     * @return  self
+     */ 
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+    public function findAll(){
+        try{
+            $pdo = Database::getPDO();
+            $sql = 'SELECT * FROM `order`';
+            $query = $pdo->prepare($sql);
+            $query->execute();
+            $orders = $query->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+            echo 'Erreur : '.$e->getMessage();
+        }
+
+        return $orders;
     }
 }

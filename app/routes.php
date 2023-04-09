@@ -13,16 +13,45 @@ $router->map(
 );
 
 $router->map(
-    'GET', 
-    '/cars',
-    [
+  'GET', 
+  '/cars',
+  [
       'method'      => 'showCarsList',
       'controller'  => $controllersNamespace . 'CarsController'
     ],
     'cars'
-);
-
-$router->map(
+  );
+  
+  $router->map(
+      'GET', 
+      '/order_current',
+      [
+        'method'      => 'order_current',
+        'controller'  => $controllersNamespace . 'MainController'
+      ],
+      'order_current'
+  );
+  
+  $router->map(
+      'GET', 
+      '/order_finish',
+      [
+        'method'      => 'showOrders',
+        'controller'  => $controllersNamespace . 'OrderController'
+      ],
+      'order_finish'
+  );
+  
+  $router->map(
+      'GET', 
+      '/order_to_come',
+      [
+        'method'      => 'order_to_come',
+        'controller'  => $controllersNamespace . 'MainController'
+      ],
+      'order_to_come'
+  );
+  $router->map(
     'GET', 
     '/dealer',
     [
@@ -40,34 +69,4 @@ $router->map(
       'controller'  => $controllersNamespace . 'MainController'
     ],
     'repair'
-);
-
-$router->map(
-    'GET', 
-    '/order_current',
-    [
-      'method'      => 'order_current',
-      'controller'  => $controllersNamespace . 'MainController'
-    ],
-    'order_current'
-);
-
-$router->map(
-    'GET', 
-    '/order_finish',
-    [
-      'method'      => 'order_finish',
-      'controller'  => $controllersNamespace . 'MainController'
-    ],
-    'order_finish'
-);
-
-$router->map(
-    'GET', 
-    '/order_to_come',
-    [
-      'method'      => 'order_to_come',
-      'controller'  => $controllersNamespace . 'MainController'
-    ],
-    'order_to_come'
 );
