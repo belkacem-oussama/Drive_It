@@ -16,8 +16,8 @@ $router->map(
     'GET', 
     '/cars',
     [
-      'method'      => 'cars',
-      'controller'  => $controllersNamespace . 'MainController'
+      'method'      => 'showCarsList',
+      'controller'  => $controllersNamespace . 'CarsController'
     ],
     'cars'
 );

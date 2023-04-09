@@ -8,6 +8,7 @@ class CarsController extends CoreController{
     public function showCarsList(){
         $car = new Cars;
         $cars = $car->findAll();
-        $this->show('home', ['cars' => $cars]);
+        $this->show('cars', ['cars' => $cars]);
+        dump($cars);
     }
 }
