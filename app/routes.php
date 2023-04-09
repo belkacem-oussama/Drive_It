@@ -6,8 +6,8 @@ $router->map(
     'GET', 
     '/',
     [
-      'method'      => 'showCarsList',
-      'controller'  => $controllersNamespace . 'CarsController'
+      'method'      => 'home',
+      'controller'  => $controllersNamespace . 'MainController'
     ],
-    'cars-list'
+    'home'
 );
