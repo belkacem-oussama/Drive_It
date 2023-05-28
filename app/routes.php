@@ -36,7 +36,7 @@ $router->map(
       'GET', 
       '/order_finish',
       [
-        'method'      => 'showOrders',
+        'method'      => 'showFinishedOrders',
         'controller'  => $controllersNamespace . 'OrderController'
       ],
       'order_finish'

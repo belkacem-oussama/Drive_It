@@ -11,4 +11,11 @@ class OrderController extends CoreController{
         $this->show('order_finish',['orders'=>$orders]);
         dump($orders);
     }
+
+    public function showFinishedOrders(){
+        $order_finished = new Order;
+        $orders_finished = $order_finished->findFinishedOrder();
+        $this->show('order_finish',['orders_finished'=>$orders_finished]);
+        dump($orders_finished);
+    }
 }

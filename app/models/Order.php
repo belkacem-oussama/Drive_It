@@ -187,4 +187,17 @@ class Order{
 
         return $orders;
     }
+
+    public function findFinishedOrder(){
+        try{
+            $pdo = Database::getPDO();
+            $sql = 'SELECT * FROM `order` WHERE status = 2';
+            $query = $pdo->prepare($sql);
+            $query->execute();
+            $orders_finished = $query->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+            echo 'Erreur : '.$e->getMessage();
+        }
+        return $orders_finished;
+    }
 }
