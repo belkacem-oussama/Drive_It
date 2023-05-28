@@ -14,6 +14,8 @@ class Order{
     private $km_end;
     private $comments;
     private $status;
+    private $DriverId;
+    private $CarsId;
 
     /**
      * Get the value of id
@@ -168,6 +170,49 @@ class Order{
      *
      * @return  self
      */ 
+    
+
+    /**
+     * Get the value of DriverId
+     */ 
+    public function getDriverId()
+    {
+        return $this->DriverId;
+    }
+
+    /**
+     * Set the value of DriverId
+     *
+     * @return  self
+     */ 
+    public function setDriverId($DriverId)
+    {
+        $this->DriverId = $DriverId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of CarsId
+     */ 
+    public function getCarsId()
+    {
+        return $this->CarsId;
+    }
+
+    /**
+     * Set the value of CarsId
+     *
+     * @return  self
+     */ 
+    public function setCarsId($CarsId)
+    {
+        $this->CarsId = $CarsId;
+
+        return $this;
+    }
+
+
     public function setStatus($status)
     {
         $this->status = $status;

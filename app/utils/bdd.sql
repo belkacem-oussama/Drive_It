@@ -69,6 +69,7 @@ CREATE TABLE `order` (
   `km_start` int(10) NOT NULL,
   `km_end` int(10) NOT NULL,
   `comments` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
   `DriverId` int(11) NOT NULL,
   `CarsId` int(11) NOT NULL,
   PRIMARY KEY (`OrderId`),
@@ -76,8 +77,8 @@ CREATE TABLE `order` (
   FOREIGN KEY (`CarsId`) REFERENCES cars(`CarsId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `order` (`rent_start`, `rent_end`, `km_start`, `km_end`, `comments`, `DriverId`, `CarsId`)
+INSERT INTO `order` (`rent_start`, `rent_end`, `km_start`, `km_end`, `comments`,`status`, `DriverId`, `CarsId`)
 VALUES
-('2023-04-10', '2023-04-12', 100, 200, 'Commentaires sur la première commande', 1, 1),
-('2023-04-11', '2023-04-13', 200, 300, 'Commentaires sur la deuxième commande', 2, 2),
-('2023-04-12', '2023-04-14', 300, 400, 'Commentaires sur la troisième commande', 3, 3);
+('2023-04-10', '2023-04-12', 100, 200, 'Commentaires sur la première commande',0, 1, 1),
+('2023-04-11', '2023-04-13', 200, 300, 'Commentaires sur la deuxième commande',1, 2, 2),
+('2023-04-12', '2023-04-14', 300, 400, 'Commentaires sur la troisième commande',2, 3, 3);
