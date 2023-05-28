@@ -2,124 +2,27 @@
   <table class="table table-condensed table-striped table-bordered table-hover no-margin">
     <thead>
       <tr>
+        <th style="width:10%" class="hidden-phone">Date location</th>
         <th style="width:20%" class="hidden-phone">Client</th>
         <th style="width:40%">Véhicule</th>
         <th style="width:10%" class="hidden-phone">Durée location</th>
         <th style="width:15%" class="hidden-phone">Kilomètres parcourus</th>
-        <th style="width:10%" class="hidden-phone">Commentaires</th>
       </tr>
     </thead>
     <tbody>
+      <?php foreach ($orders_finished as $order_finished) { ?>
       <tr>
+        <td class="hidden-phone"><?=$order_finished->date ?></td>
         <td>
-          <span class="name">Donald Oswany</span>
+          <span class="name"><?= $order_finished->firstname?> <?= $order_finished->lastname ?></span>
         </td>
-        <td class="hidden-phone">Agile #555</td>
+        <td class="hidden-phone"><?= $order_finished->brand ?> <?=$order_finished->model ?></td>
         <td class="hidden-phone">
-          <span class="label label label-info">New</span>
+          <span class="label label-info"><?= $order_finished->location_duration_days ?> jours</span>
         </td>
-        <td class="hidden-phone">15 - 10 - 2013</td>
-        <td class="hidden-phone">
-          <div class="btn-group">
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="#">Edit</a>
-              </li>
-              <li>
-                <a href="#">Delete</a>
-              </li>
-            </ul>
-          </div>
-        </td>
+        <td class="hidden-phone"><?=$order_finished->location_duration ?> km</td>
       </tr>
-      <tr>
-        <td>
-          <span class="name">Michel Clark</span>
-        </td>
-        <td class="hidden-phone">Wilson #343</td>
-        <td class="hidden-phone">
-          <span class="label label label-success">New</span>
-        </td>
-        <td class="hidden-phone">10 - 10 - 2013</td>
-        <td class="hidden-phone">
-          <div class="btn-group">
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="#">Edit</a>
-              </li>
-              <li>
-                <a href="#">Delete</a>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="name">Rahul David</span>
-        </td>
-        <td class="hidden-phone">Mako #643</td>
-        <td class="hidden-phone">
-          <span class="label label label-danger">New</span>
-        </td>
-        <td class="hidden-phone">14 - 10 - 2014</td>
-        <td class="hidden-phone">
-          <div class="btn-group">
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="#">Edit</a>
-              </li>
-              <li>
-                <a href="#">Delete</a>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="name">Anthony Michell</span>
-        </td>
-        <td class="hidden-phone">Mako #5432</td>
-        <td class="hidden-phone">
-          <span class="label label label-info">New</span>
-        </td>
-        <td class="hidden-phone">19 - 11 - 2014</td>
-        <td class="hidden-phone">
-          <div class="btn-group">
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="#">Edit</a>
-              </li>
-              <li>
-                <a href="#">Delete</a>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="name">Mark Phillips</span>
-        </td>
-        <td class="hidden-phone">Phill #999</td>
-        <td class="hidden-phone">
-          <span class="label label label-success">New</span>
-        </td>
-        <td class="hidden-phone">12 - 11 - 2015</td>
-        <td class="hidden-phone">
-          <div class="btn-group">
-            <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="#">Edit</a>
-              </li>
-              <li>
-                <a href="#">Delete</a>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
+      <?php } ?>
     </tbody>
   </table>
 </div>
