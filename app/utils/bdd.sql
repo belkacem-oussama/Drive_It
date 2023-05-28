@@ -12,15 +12,16 @@ CREATE TABLE `cars` (
   `caution` int(6) NOT NULL,
   `price` int(50) NOT NULL,
   `availability` int(1) NOT NULL,
+  `power` int(11) NOT NULL,
   PRIMARY KEY (`CarsId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `cars` (`registration`, `brand`, `model`, `year`, `caution`, `price`, `availability`)
+INSERT INTO `cars` (`registration`, `brand`, `model`, `year`, `caution`, `price`, `availability`,`power`)
 VALUES
-('FB-046-BQ', 'Citroën', 'C3', 2019, 5000, 200, 1),
-('AB-123-CD', 'Peugeot', '308', 2018, 5500, 25000, 1),
-('EF-456-FG', 'Renault', 'Clio', 2020, 6000, 22000, 0),
-('GH-789-HI', 'Toyota', 'Yaris', 2017, 6500, 18000, 1);
+('FB-046-BQ', 'Citroën', 'C3', 2019, 5000, 200, 1,92),
+('AB-123-CD', 'Peugeot', '308', 2018, 5500, 25000, 1,110),
+('EF-456-FG', 'Renault', 'Clio', 2020, 6000, 22000, 0,85),
+('GH-789-HI', 'Toyota', 'Yaris', 2017, 6500, 18000, 1,75);
 
 DROP TABLE IF EXISTS `dealer`;
 CREATE TABLE `dealer` (
@@ -69,6 +70,7 @@ CREATE TABLE `order` (
   `km_start` int(10) NOT NULL,
   `km_end` int(10) NOT NULL,
   `comments` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL,
   `DriverId` int(11) NOT NULL,
   `CarsId` int(11) NOT NULL,
   PRIMARY KEY (`OrderId`),
@@ -76,8 +78,8 @@ CREATE TABLE `order` (
   FOREIGN KEY (`CarsId`) REFERENCES cars(`CarsId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `order` (`rent_start`, `rent_end`, `km_start`, `km_end`, `comments`, `DriverId`, `CarsId`)
+INSERT INTO `order` (`rent_start`, `rent_end`, `km_start`, `km_end`, `comments`,`status`, `DriverId`, `CarsId`)
 VALUES
-('2023-04-10', '2023-04-12', 100, 200, 'Commentaires sur la première commande', 1, 1),
-('2023-04-11', '2023-04-13', 200, 300, 'Commentaires sur la deuxième commande', 2, 2),
-('2023-04-12', '2023-04-14', 300, 400, 'Commentaires sur la troisième commande', 3, 3);
+('2023-04-10', '2023-04-12', 100, 200, 'Commentaires sur la première commande',0, 1, 1),
+('2023-04-11', '2023-04-13', 200, 300, 'Commentaires sur la deuxième commande',1, 2, 2),
+('2023-04-12', '2023-04-14', 300, 400, 'Commentaires sur la troisième commande',2, 3, 3);

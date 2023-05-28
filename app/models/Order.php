@@ -14,6 +14,8 @@ class Order{
     private $km_end;
     private $comments;
     private $status;
+    private $DriverId;
+    private $CarsId;
 
     /**
      * Get the value of id
@@ -168,12 +170,56 @@ class Order{
      *
      * @return  self
      */ 
+    
+
+    /**
+     * Get the value of DriverId
+     */ 
+    public function getDriverId()
+    {
+        return $this->DriverId;
+    }
+
+    /**
+     * Set the value of DriverId
+     *
+     * @return  self
+     */ 
+    public function setDriverId($DriverId)
+    {
+        $this->DriverId = $DriverId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of CarsId
+     */ 
+    public function getCarsId()
+    {
+        return $this->CarsId;
+    }
+
+    /**
+     * Set the value of CarsId
+     *
+     * @return  self
+     */ 
+    public function setCarsId($CarsId)
+    {
+        $this->CarsId = $CarsId;
+
+        return $this;
+    }
+
+
     public function setStatus($status)
     {
         $this->status = $status;
 
         return $this;
     }
+
     public function findAll(){
         try{
             $pdo = Database::getPDO();
@@ -191,7 +237,12 @@ class Order{
     public function findFinishedOrder(){
         try{
             $pdo = Database::getPDO();
-            $sql = 'SELECT * FROM `order` WHERE status = 2';
+            $sql =
+            'SELECT `order_date` AS date, DATEDIFF(`rent_end`, `rent_start`) as location_duration_days, `km_end` - `km_start` AS location_duration, `status`, `comments`, `firstname`, `lastname`, `brand`,`model`
+            FROM `order`
+            JOIN `driver` ON `order`.`DriverId` = `driver`.`DriverId`
+            JOIN `cars` ON `order`.`CarsId` = `cars`.`CarsId`
+            WHERE `status` = 0;';
             $query = $pdo->prepare($sql);
             $query->execute();
             $orders_finished = $query->fetchAll(PDO::FETCH_OBJ);
