@@ -12,15 +12,16 @@ CREATE TABLE `cars` (
   `caution` int(6) NOT NULL,
   `price` int(50) NOT NULL,
   `availability` int(1) NOT NULL,
+  `power` int(11) NOT NULL,
   PRIMARY KEY (`CarsId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `cars` (`registration`, `brand`, `model`, `year`, `caution`, `price`, `availability`)
+INSERT INTO `cars` (`registration`, `brand`, `model`, `year`, `caution`, `price`, `availability`,`power`)
 VALUES
-('FB-046-BQ', 'Citroën', 'C3', 2019, 5000, 200, 1),
-('AB-123-CD', 'Peugeot', '308', 2018, 5500, 25000, 1),
-('EF-456-FG', 'Renault', 'Clio', 2020, 6000, 22000, 0),
-('GH-789-HI', 'Toyota', 'Yaris', 2017, 6500, 18000, 1);
+('FB-046-BQ', 'Citroën', 'C3', 2019, 5000, 200, 1,92),
+('AB-123-CD', 'Peugeot', '308', 2018, 5500, 25000, 1,110),
+('EF-456-FG', 'Renault', 'Clio', 2020, 6000, 22000, 0,85),
+('GH-789-HI', 'Toyota', 'Yaris', 2017, 6500, 18000, 1,75);
 
 DROP TABLE IF EXISTS `dealer`;
 CREATE TABLE `dealer` (
