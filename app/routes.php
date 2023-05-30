@@ -26,8 +26,8 @@ $router->map(
       'GET', 
       '/order_current',
       [
-        'method'      => 'order_current',
-        'controller'  => $controllersNamespace . 'MainController'
+        'method'      => 'showCurrentOrders',
+        'controller'  => $controllersNamespace . 'OrderController'
       ],
       'order_current'
   );
