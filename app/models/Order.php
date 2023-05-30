@@ -269,4 +269,22 @@ class Order{
         }
         return $orders_coming;
     }
+
+    public function findCurrentOrder(){
+        try{
+            $pdo = Database::getPDO();
+            $sql =
+            'SELECT `rent_start` AS dateStart, `rent_end` AS dateEnd, DATEDIFF(`rent_end`, `rent_start`) as location_duration_days, `status`, `comments`, `firstname`, `lastname`, `brand`,`model`,`km_start`
+            FROM `order`
+            JOIN `driver` ON `order`.`DriverId` = `driver`.`DriverId`
+            JOIN `cars` ON `order`.`CarsId` = `cars`.`CarsId`
+            WHERE `status` = 2;';
+            $query = $pdo->prepare($sql);
+            $query->execute();
+            $orders_coming = $query->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+            echo 'Erreur : '.$e->getMessage();
+        }
+        return $orders_coming;
+    }
 }
