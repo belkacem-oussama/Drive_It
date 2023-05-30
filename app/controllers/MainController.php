@@ -24,7 +24,7 @@ class MainController extends CoreController{
     }
 
     public function order_to_come(){
-        $this->show('order_to_come');
+        $this->show('order_coming');
     }
 
     public function order_finish(){
