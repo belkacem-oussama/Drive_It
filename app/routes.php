@@ -46,8 +46,8 @@ $router->map(
       'GET', 
       '/order_to_come',
       [
-        'method'      => 'order_to_come',
-        'controller'  => $controllersNamespace . 'MainController'
+        'method'      => 'showComingOrders',
+        'controller'  => $controllersNamespace . 'OrderController'
       ],
       'order_to_come'
   );
