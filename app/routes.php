@@ -55,8 +55,8 @@ $router->map(
     'GET', 
     '/dealer',
     [
-      'method'      => 'dealer',
-      'controller'  => $controllersNamespace . 'MainController'
+      'method'      => 'showDealers',
+      'controller'  => $controllersNamespace . 'DealerController'
     ],
     'dealer'
 );
