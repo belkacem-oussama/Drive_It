@@ -1,5 +1,10 @@
 <?php
 
+namespace App\models;
+use App\Utils\Database;
+
+use PDO;
+
 class Dealer{
     private $id;
     private $brand;
@@ -127,4 +132,18 @@ class Dealer{
 
         return $this;
     }
-}
+
+    public function findDealers(){
+            try{
+                $pdo = Database::getPDO();
+                $sql = 'SELECT * FROM `dealer`';
+                $query = $pdo->prepare($sql);
+                $query->execute();
+                $dealers = $query->fetchAll(PDO::FETCH_OBJ);
+            }catch(PDOException $e){
+                echo 'Erreur : '.$e->getMessage();
+            }
+    
+            return $dealers;
+        } 
+    }
