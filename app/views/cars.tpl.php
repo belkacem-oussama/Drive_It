@@ -1,7 +1,6 @@
 <div class="d-flex justify-content-start align-content-around flex-wrap">
 <?php foreach($cars as $car){?>
     <div class="card p-2 m-2" style="width: 15rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><?=$car->brand?> <?= $car->model ?></h5>
         <p class="card-text">Puissance :<?= $car->power ?>ch</p>
