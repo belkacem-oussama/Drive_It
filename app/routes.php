@@ -63,10 +63,10 @@ $router->map(
 
 $router->map(
     'GET', 
-    '/repair',
+    '/available',
     [
-      'method'      => 'repair',
+      'method'      => 'available',
       'controller'  => $controllersNamespace . 'MainController'
     ],
-    'repair'
+    'available'
 );
