@@ -27,7 +27,7 @@
               <li><a class="dropdown-item" href="/order_new">ajouter une commande</a></li>
             </ul>
           </li>
-          <a class="nav-link" aria-current="page" href="/repair">Réparation</a>
+          <a class="nav-link" aria-current="page" href="/available">Disponibilité</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/cars">Flotte</a>
