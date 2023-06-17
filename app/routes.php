@@ -21,6 +21,16 @@ $router->map(
     ],
     'cars'
   );
+
+  $router->map(
+    'GET', 
+    '/order_new',
+    [
+      'method'      => 'showNewOrder',
+      'controller'  => $controllersNamespace . 'OrderController'
+    ],
+    'order_new'
+);
   
   $router->map(
       'GET', 

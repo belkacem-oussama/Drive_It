@@ -220,6 +220,8 @@ class Order{
         return $this;
     }
 
+    /**GET */
+
     public function findAll(){
         try{
             $pdo = Database::getPDO();
@@ -287,4 +289,32 @@ class Order{
         }
         return $orders_coming;
     }
+
+    /** POST */
+
+    public function addNewOrder($orderData){
+        try{
+            $pdo = Databas::getPDO();
+            $sql = "INSERT INTO orders (column1, column2, column3) VALUES (:value1, :value2, :value3)";
+            $stmt = $pdo->prepare($sql);
+            
+            // Bind the parameter values
+            $stmt->bindValue(':value1', $orderData['value1']);
+            $stmt->bindValue(':value2', $orderData['value2']);
+            $stmt->bindValue(':value3', $orderData['value3']);
+            
+            $stmt->execute();
+            
+            // Optionally, you can check the affected rows
+            $rowCount = $stmt->rowCount();
+            if ($rowCount > 0) {
+                echo 'Order added successfully.';
+            } else {
+                echo 'Failed to add order.';
+            }
+            
+        } catch(PDOException $e){
+            echo 'Erreur : '.$e->getMessage();
+        }
+    }    
 }

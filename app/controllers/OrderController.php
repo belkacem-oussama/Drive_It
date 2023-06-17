@@ -23,4 +23,10 @@ class OrderController extends CoreController{
         $orders_current = $order_current->findCurrentOrder();
         $this->show('order_current',['orders_current'=>$orders_current]);
     }
+
+    public function showNewOrder(){
+        $order_current = new Order;
+        $orders_current = $order_current->findCurrentOrder();
+        $this->show('order_new',['orders_new']);
+    }
 }

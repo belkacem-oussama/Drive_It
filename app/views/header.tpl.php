@@ -24,6 +24,7 @@
               <li><a class="dropdown-item" href="/order_current">en cours</a></li>
               <li><a class="dropdown-item" href="/order_to_come">à venir</a></li>
               <li><a class="dropdown-item" href="/order_finish">clôturées</a></li>
+              <li><a class="dropdown-item" href="/order_new">ajouter une commande</a></li>
             </ul>
           </li>
           <a class="nav-link" aria-current="page" href="/repair">Réparation</a>
