@@ -2,6 +2,10 @@
 
 $controllersNamespace = '\App\controllers\\';
 
+/**
+ * GET
+ */
+
 $router->map(
     'GET', 
     '/',

@@ -4,6 +4,7 @@ namespace App\controllers;
 
 use App\models\Order;
 use App\models\Cars;
+use App\models\Driver;
 
 
 class OrderController extends CoreController{
@@ -27,10 +28,11 @@ class OrderController extends CoreController{
     }
 
     public function NewOrder(){
-
+    /**
+     * GET CARS
+     */
         $car_list = new Cars;
         $cars_list = $car_list->FindAll();
-        $this->show('order_new',['cars_list'=>$cars_list]);
 
         
         $data_array = [
@@ -40,19 +42,39 @@ class OrderController extends CoreController{
             'phone' => filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING),
             'mail' => filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING),
             'name' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING),
-            'surname' => filter_input(INPUT_POST, 'surname', FILTER_SANITIZE_STRING),
             'location' => filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING),
             'city' => filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING)
         ];
-        
+
         $errorList = [];
 
-        if(empty($data_array)){
-            $errorList[]='Champ vide';
-        }
+        // if(empty($data_array)){
+        //     $errorList[]='Champ vide';
+        // }
 
-        if(empty($errorList)){
-            dump($data_array);
-        }
+        // if (empty($errorList)) {
+        //     $order_new = new Order();
+        //     $order_new->setRent_start($data_array['start_date']);
+        //     $order_new->setRend_end($data_array['end_date']);
+                    
+        //     $order_new->addNewOrder($data_array);
+        // }
+        
+
+        // if($order_new->addNewOrder()){
+        //     header('Location: /order_to_come');
+        // }else{
+        //     $errorList[]='La sauvegarde a échoué';
+        // }
+        /**
+         * GET DRIVERS
+         */
+
+        $drivers = new Driver;
+        $drivers_list = $drivers->findAll();
+
+    //View+data
+    $this->show('order_new', ['cars_list' => $cars_list, 'drivers_list' => $drivers_list]);
+    dump($data_array, $drivers_list);
     }
 }

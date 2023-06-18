@@ -19,12 +19,13 @@
     <input type="date" class="form-control" id="inputEndDate" name="end_date">
   </div>
   <div class="form-group col-md-6">
-    <label for="inputAddress2">Nom client</label>
-    <input type="text" class="form-control" id="inputName" name="name">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputAddress2">Prénom client</label>
-    <input type="text" class="form-control" id="inputSurname" name="surname">
+  <label for="inputVehicule">Prénom Client</label>
+    <select class="form-control" id="inputName" name="name">
+      <option value="cars">Sélectionnez un client</option>
+    <?php foreach ($drivers_list as $driver) { ?>
+        <option><?= $driver->firstname.' '. $driver->lastname ?></option>
+        <?php } ?>
+    </select>
   </div>
   <div class="form-group col-md-6">
     <label for="inputAddress2">Téléphone client</label>
