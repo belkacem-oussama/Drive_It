@@ -27,9 +27,21 @@ class OrderController extends CoreController{
     }
 
     public function NewOrder(){
+
         $car_list = new Cars;
         $cars_list = $car_list->FindAll();
         $this->show('order_new',['cars_list'=>$cars_list]);
-        dump($cars_list);
+
+        $cars = filter_input(INPUT_POST, 'cars', FILTER_SANITIZE_STRING);
+
+        $errorList = [];
+
+        if(empty($cars)){
+            $errorList[]='Champ vide';
+        }
+
+        if(empty($errorList)){
+            dump($cars);
+        }
     }
 }

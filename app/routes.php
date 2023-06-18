@@ -80,3 +80,17 @@ $router->map(
     ],
     'repair'
 );
+
+/**
+ * POST
+ */
+
+ $router->map(
+  'POST', 
+  '/order_new',
+  [
+    'method'      => 'NewOrder',
+    'controller'  => $controllersNamespace . 'OrderController'
+  ],
+  'order_new_post'
+);
