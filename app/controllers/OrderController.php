@@ -32,16 +32,27 @@ class OrderController extends CoreController{
         $cars_list = $car_list->FindAll();
         $this->show('order_new',['cars_list'=>$cars_list]);
 
-        $cars = filter_input(INPUT_POST, 'cars', FILTER_SANITIZE_STRING);
-
+        
+        $data_array = [
+            'cars' => filter_input(INPUT_POST, 'cars', FILTER_SANITIZE_STRING),
+            'start_date' => filter_input(INPUT_POST, 'start_date', FILTER_SANITIZE_STRING),
+            'end_date' => filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_STRING),
+            'phone' => filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING),
+            'mail' => filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING),
+            'name' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING),
+            'surname' => filter_input(INPUT_POST, 'surname', FILTER_SANITIZE_STRING),
+            'location' => filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING),
+            'city' => filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING)
+        ];
+        
         $errorList = [];
 
-        if(empty($cars)){
+        if(empty($data_array)){
             $errorList[]='Champ vide';
         }
 
         if(empty($errorList)){
-            dump($cars);
+            dump($data_array);
         }
     }
 }
