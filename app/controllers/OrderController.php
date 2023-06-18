@@ -28,6 +28,7 @@ class OrderController extends CoreController{
     }
 
     public function NewOrder(){
+        
     /**
      * GET CARS
      */
@@ -39,11 +40,7 @@ class OrderController extends CoreController{
             'cars' => filter_input(INPUT_POST, 'cars', FILTER_SANITIZE_STRING),
             'start_date' => filter_input(INPUT_POST, 'start_date', FILTER_SANITIZE_STRING),
             'end_date' => filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_STRING),
-            'phone' => filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING),
-            'mail' => filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_STRING),
             'name' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING),
-            'location' => filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING),
-            'city' => filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING)
         ];
 
         $errorList = [];
@@ -66,6 +63,7 @@ class OrderController extends CoreController{
         // }else{
         //     $errorList[]='La sauvegarde a échoué';
         // }
+
         /**
          * GET DRIVERS
          */
@@ -73,8 +71,11 @@ class OrderController extends CoreController{
         $drivers = new Driver;
         $drivers_list = $drivers->findAll();
 
-    //View+data
+    /**
+     *View+data
+     */
+
     $this->show('order_new', ['cars_list' => $cars_list, 'drivers_list' => $drivers_list]);
-    dump($data_array, $drivers_list);
+    dump($data_array);
     }
 }
