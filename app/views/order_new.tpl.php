@@ -3,12 +3,12 @@
   <div class="form-group col-md-6">
     <label for="inputVehicule">Véhicule</label>
     <select class="form-control" id="">
-        <option value="">Sélectionnez un véhicule</option>
-        <option value="car1">Voiture 1</option>
-        <option value="car2">Voiture 2</option>
-        <option value="car3">Voiture 3</option>
+      <option value="cars">Sélectionnez un véhicule</option>
+    <?php foreach ($cars_list as $cars) { ?>
+        <option><?= $cars->model ?></option>
+        <?php } ?>
     </select>
-</div>
+  </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Date de début de la location</label>
       <input type="date" class="form-control" id="">

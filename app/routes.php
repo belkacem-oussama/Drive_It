@@ -26,7 +26,7 @@ $router->map(
     'GET', 
     '/order_new',
     [
-      'method'      => 'showNewOrder',
+      'method'      => 'NewOrder',
       'controller'  => $controllersNamespace . 'OrderController'
     ],
     'order_new'

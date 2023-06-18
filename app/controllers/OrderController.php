@@ -3,6 +3,8 @@
 namespace App\controllers;
 
 use App\models\Order;
+use App\models\Cars;
+
 
 class OrderController extends CoreController{
 
@@ -24,9 +26,10 @@ class OrderController extends CoreController{
         $this->show('order_current',['orders_current'=>$orders_current]);
     }
 
-    public function showNewOrder(){
-        $order_current = new Order;
-        $orders_current = $order_current->findCurrentOrder();
-        $this->show('order_new',['orders_new']);
+    public function NewOrder(){
+        $car_list = new Cars;
+        $cars_list = $car_list->FindAll();
+        $this->show('order_new',['cars_list'=>$cars_list]);
+        dump($cars_list);
     }
 }
