@@ -9,15 +9,17 @@ class Database
     /** @var PDO */
     private $dbh;
     private static $_instance;
+    
     private function __construct()
     {
         $configData = parse_ini_file(__DIR__ . '/../config.ini');
+        $dbPath = __DIR__ . '/../database.sqlite'; // Path to the SQLite database file
 
         try {
             $this->dbh = new PDO(
-                "mysql:host={$configData['DB_HOST']};dbname={$configData['DB_NAME']};charset=utf8",
-                $configData['DB_USERNAME'],
-                $configData['DB_PASSWORD'],
+                "sqlite:{$dbPath}",
+                null,
+                null,
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)
             );
         } catch (\Exception $exception) {
@@ -29,6 +31,7 @@ class Database
             exit;
         }
     }
+    
     public static function getPDO()
     {
         if (empty(self::$_instance)) {
