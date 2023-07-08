@@ -223,7 +223,7 @@ class Order{
     public function findAll(){
         try{
             $pdo = Database::getPDO();
-            $sql = 'SELECT * FROM `order`';
+            $sql = 'SELECT * FROM `order_table`';
             $query = $pdo->prepare($sql);
             $query->execute();
             $orders = $query->fetchAll(PDO::FETCH_OBJ);
@@ -238,10 +238,19 @@ class Order{
         try{
             $pdo = Database::getPDO();
             $sql =
-            'SELECT `order_date` AS date, DATEDIFF(`rent_end`, `rent_start`) as location_duration_days, `km_end` - `km_start` AS location_duration, `status`, `comments`, `firstname`, `lastname`, `brand`,`model`
-            FROM `order`
-            JOIN `driver` ON `order`.`DriverId` = `driver`.`DriverId`
-            JOIN `cars` ON `order`.`CarsId` = `cars`.`CarsId`
+            'SELECT
+            `order_date` AS date,
+            julianday(`rent_end`) - julianday(`rent_start`) as location_duration_days,
+            `km_end` - `km_start` AS location_duration,
+            `status`,
+            `comments`,
+            `firstname`,
+            `lastname`,
+            `brand`,
+            `model`
+            FROM `order_table`
+            JOIN `driver` ON `order_table`.`DriverId` = `driver`.`DriverId`
+            JOIN `cars` ON `order_table`.`CarsId` = `cars`.`CarsId`
             WHERE `status` = 0;';
             $query = $pdo->prepare($sql);
             $query->execute();
@@ -256,10 +265,10 @@ class Order{
         try{
             $pdo = Database::getPDO();
             $sql =
-            'SELECT `rent_start` AS dateStart, `rent_end` AS dateEnd, DATEDIFF(`rent_end`, `rent_start`) as location_duration_days, `status`, `comments`, `firstname`, `lastname`, `brand`,`model`,`km_start`
-            FROM `order`
-            JOIN `driver` ON `order`.`DriverId` = `driver`.`DriverId`
-            JOIN `cars` ON `order`.`CarsId` = `cars`.`CarsId`
+            'SELECT `rent_start` AS dateStart, `rent_end` AS dateEnd, julianday(`rent_end`) - julianday(`rent_start`) as location_duration_days, `status`, `comments`, `firstname`, `lastname`, `brand`,`model`,`km_start`
+            FROM `order_table`
+            JOIN `driver` ON `order_table`.`DriverId` = `driver`.`DriverId`
+            JOIN `cars` ON `order_table`.`CarsId` = `cars`.`CarsId`
             WHERE `status` = 1;';
             $query = $pdo->prepare($sql);
             $query->execute();
@@ -274,10 +283,10 @@ class Order{
         try{
             $pdo = Database::getPDO();
             $sql =
-            'SELECT `rent_start` AS dateStart, `rent_end` AS dateEnd, DATEDIFF(`rent_end`, `rent_start`) as location_duration_days, `status`, `comments`, `firstname`, `lastname`, `brand`,`model`,`km_start`
-            FROM `order`
-            JOIN `driver` ON `order`.`DriverId` = `driver`.`DriverId`
-            JOIN `cars` ON `order`.`CarsId` = `cars`.`CarsId`
+            'SELECT `rent_start` AS dateStart, `rent_end` AS dateEnd, julianday(`rent_end`) - julianday(`rent_start`) as location_duration_days, `status`, `comments`, `firstname`, `lastname`, `brand`,`model`,`km_start`
+            FROM `order_table`
+            JOIN `driver` ON `order_table`.`DriverId` = `driver`.`DriverId`
+            JOIN `cars` ON `order_table`.`CarsId` = `cars`.`CarsId`
             WHERE `status` = 2;';
             $query = $pdo->prepare($sql);
             $query->execute();
