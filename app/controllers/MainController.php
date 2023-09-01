@@ -15,8 +15,8 @@ class MainController extends CoreController{
         $this->show('dealer');
     }
 
-    public function repair(){
-        $this->show('repair');
+    public function available(){
+        $this->show('available');
     }
 
     public function order_current(){

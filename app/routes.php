@@ -55,18 +55,18 @@ $router->map(
     'GET', 
     '/dealer',
     [
-      'method'      => 'dealer',
-      'controller'  => $controllersNamespace . 'MainController'
+      'method'      => 'showDealers',
+      'controller'  => $controllersNamespace . 'DealerController'
     ],
     'dealer'
 );
 
 $router->map(
     'GET', 
-    '/repair',
+    '/available',
     [
-      'method'      => 'repair',
+      'method'      => 'available',
       'controller'  => $controllersNamespace . 'MainController'
     ],
-    'repair'
+    'available'
 );
