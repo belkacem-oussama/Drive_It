@@ -225,7 +225,7 @@ class Order{
     public function findAll(){
         try{
             $pdo = Database::getPDO();
-            $sql = 'SELECT * FROM `order`';
+            $sql = 'SELECT * FROM `order_table`';
             $query = $pdo->prepare($sql);
             $query->execute();
             $orders = $query->fetchAll(PDO::FETCH_OBJ);

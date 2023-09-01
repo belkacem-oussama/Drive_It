@@ -9,6 +9,7 @@ class Database
     /** @var PDO */
     private $dbh;
     private static $_instance;
+<<<<<<< HEAD
 
     private function __construct()
     {
@@ -24,6 +25,19 @@ class Database
                 "mysql:host={$host};dbname={$dbname}",
                 $username,
                 $password,
+=======
+    
+    private function __construct()
+    {
+        $configData = parse_ini_file(__DIR__ . '/../config.ini');
+        $dbPath = __DIR__ . '/../database.sqlite'; // Path to the SQLite database file
+
+        try {
+            $this->dbh = new PDO(
+                "sqlite:{$dbPath}",
+                null,
+                null,
+>>>>>>> 32c8f4e (chhanges for sqlite)
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)
             );
         } catch (\Exception $exception) {
@@ -35,7 +49,11 @@ class Database
             exit;
         }
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 32c8f4e (chhanges for sqlite)
     public static function getPDO()
     {
         if (empty(self::$_instance)) {
