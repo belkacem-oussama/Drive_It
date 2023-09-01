@@ -27,55 +27,58 @@ class OrderController extends CoreController{
         $this->show('order_current',['orders_current'=>$orders_current]);
     }
 
-    public function NewOrder(){
-        
+    public function NewOrder()
+{
     /**
      * GET CARS
      */
-        $car_list = new Cars;
-        $cars_list = $car_list->FindAll();
+    $car_list = new Cars;
+    $cars_list = $car_list->FindAll();
 
-        
-        $data_array = [
-            'cars' => filter_input(INPUT_POST, 'cars', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
-            'start_date' => filter_input(INPUT_POST, 'start_date', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
-            'end_date' => filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
-            'name' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
-        ];
+    $drivers = new Driver;
+    $drivers_list = $drivers->findAll();
 
-        $errorList = [];
+    $data_array = [
+        'cars' => $_POST['cars'] ?? '',
+        'start_date' => $_POST['start_date'] ?? '',
+        'end_date' => $_POST['end_date'] ?? '',
+        'name' => $_POST['name'] ?? '',
+        'km_start' => $_POST['km_start'] ?? '',
+        'km_end' => $_POST['km_end'] ?? '',
+        'comments' => $_POST['comments'] ?? '',
+        'status' => $_POST['status'] ?? '',
+        'DriverId' => $_POST['DriverId'] ?? '',
+        'CarsId' => $_POST['cars_id'] ?? '',
+    ];
 
-        // if(empty($data_array)){
-        //     $errorList[]='Champ vide';
-        // }
+    $errorList = [];
 
-        // if (empty($errorList)) {
-        //     $order_new = new Order();
-        //     $order_new->setRent_start($data_array['start_date']);
-        //     $order_new->setRend_end($data_array['end_date']);
-                    
-        //     $order_new->addNewOrder($data_array);
-        // }
-        
+    if (empty($data_array)) {
+        $errorList[] = 'Champ vide';
+    }
 
-        // if($order_new->addNewOrder()){
-        //     header('Location: /order_to_come');
-        // }else{
-        //     $errorList[]='La sauvegarde a échoué';
-        // }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($errorList)) {
+        $order_new = new Order();
+        $order_new->setRent_start($data_array['start_date']);
+        $order_new->setRend_end($data_array['end_date']);
+        $order_new->setKm_start($data_array['km_start']);
+        $order_new->setKm_end($data_array['km_end']);
+        $order_new->setComments($data_array['comments']);
 
-        /**
-         * GET DRIVERS
-         */
-
-        $drivers = new Driver;
-        $drivers_list = $drivers->findAll();
+        if ($order_new->addNewOrder($data_array)) {
+            header('Location: /order_to_come');
+            exit();
+        } else {
+            $errorList[] = 'La sauvegarde a échoué';
+            dump($errorList);
+        }
+    }
 
     /**
-     *View+data
+     * View+data
      */
-
-    $this->show('order_new', ['cars_list' => $cars_list, 'drivers_list' => $drivers_list]);
+    $this->show('order_new', ['cars_list' => $cars_list, 'drivers_list' => $drivers_list, 'errorList' => $errorList]);
     dump($data_array);
-    }
+}
+
 }
