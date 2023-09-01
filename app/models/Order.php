@@ -225,7 +225,7 @@ class Order{
     public function findAll(){
         try{
             $pdo = Database::getPDO();
-            $sql = 'SELECT * FROM `order_table`';
+            $sql = 'SELECT * FROM `orders`';
             $query = $pdo->prepare($sql);
             $query->execute();
             $orders = $query->fetchAll(PDO::FETCH_OBJ);
@@ -340,7 +340,7 @@ class Order{
             $driverId = $pdo->lastInsertId();
         }
 
-        $sql = "INSERT INTO `order_table` (rent_start, rent_end, km_start, km_end, comments, status, DriverId, CarsId) 
+        $sql = "INSERT INTO `orders` (rent_start, rent_end, km_start, km_end, comments, status, DriverId, CarsId) 
                 VALUES (:rent_start, :rent_end, :km_start, :km_end, :comments, :status, :DriverId, :cars)";
         $stmt = $pdo->prepare($sql);
 
