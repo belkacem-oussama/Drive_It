@@ -19,12 +19,13 @@
     <input type="date" class="form-control" id="inputEndDate" name="end_date" required>
   </div>
   <div class="form-group col-md-6">
-    <label for="inputAddress">Kilométrage de début de la location</label>
-    <input type="text" class="form-control" id="inputKmStart" name="km_start" required>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputAddress">Kilométrage de fin de la location</label>
-    <input type="text" class="form-control" id="inputKmEnd" name="km_end" required>
+  <label for="inputVehicule">Prénom Client</label>
+    <select class="form-control" id="inputName" name="name">
+      <option value="cars">Sélectionnez un client</option>
+    <?php foreach ($drivers_list as $driver) { ?>
+        <option><?= $driver->firstname.' '. $driver->lastname ?></option>
+        <?php } ?>
+    </select>
   </div>
   <div class="form-group col-md-6">
     <label for="inputVehicule">Client</label>
