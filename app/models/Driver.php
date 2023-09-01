@@ -1,5 +1,10 @@
 <?php
 
+namespace App\models;
+use App\Utils\Database;
+
+use PDO;
+
 class Driver{
     private $id;
     private $firstname;
@@ -168,5 +173,22 @@ class Driver{
         $this->licence_number = $licence_number;
 
         return $this;
+    }
+    /**
+     * GET
+     */
+
+    public function findAll(){
+        try{
+            $pdo = Database::getPDO();
+            $sql = 'SELECT * FROM `driver`';
+            $query = $pdo->prepare($sql);
+            $query->execute();
+            $drivers = $query->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+            echo 'Erreur : '.$e->getMessage();
+        }
+
+        return $drivers;
     }
 }

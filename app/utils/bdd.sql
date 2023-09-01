@@ -1,7 +1,9 @@
+-- CREATE DATABASE --
 DROP DATABASE IF EXISTS `drive_it`;
 CREATE DATABASE `drive_it` DEFAULT CHARACTER SET utf8mb4;
 USE `drive_it`;
 
+-- TABLE CARS --
 DROP TABLE IF EXISTS `cars`;
 CREATE TABLE `cars` (
   `CarsId` int(11) NOT NULL AUTO_INCREMENT,
@@ -15,7 +17,6 @@ CREATE TABLE `cars` (
   `power` int(11) NOT NULL,
   PRIMARY KEY (`CarsId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 INSERT INTO `cars` (`registration`, `brand`, `model`, `year`, `caution`, `price`, `availability`,`power`)
 VALUES
 ('FB-046-BQ', 'Citroën', 'C3', 2019, 5000, 200, 1,92),
@@ -23,6 +24,7 @@ VALUES
 ('EF-456-FG', 'Renault', 'Clio', 2020, 6000, 22000, 0,85),
 ('GH-789-HI', 'Toyota', 'Yaris', 2017, 6500, 18000, 1,75);
 
+-- TABLE DEALER --
 DROP TABLE IF EXISTS `dealer`;
 CREATE TABLE `dealer` (
   `DealerId` int(11) NOT NULL AUTO_INCREMENT,
@@ -32,8 +34,7 @@ CREATE TABLE `dealer` (
   `phone` varchar(10) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `CarsId` int(11) NOT NULL,
-  PRIMARY KEY (`DealerId`),
-  FOREIGN KEY (`CarsId`) REFERENCES cars(`CarsId`)
+  PRIMARY KEY (`DealerId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `dealer` (`brand`, `contact_name`, `address`, `phone`, `mail`, `CarsId`)
@@ -42,6 +43,7 @@ VALUES
 ('Renault', 'Sophie Martin', '15 Avenue des Champs-Élysées, 75008 Paris', '0987654321', 'sophiemartin@renault.fr', 3),
 ('Citroën', 'Pierre Dubois', '50 Avenue Montaigne, 75008 Paris', '0123456789', 'pierredubois@citroen.fr', 1);
 
+-- TABLE DRIVER --
 DROP TABLE IF EXISTS `driver`;
 CREATE TABLE `driver` (
   `DriverId` int(11) NOT NULL AUTO_INCREMENT,
@@ -61,8 +63,8 @@ VALUES
 ('Marie', 'Martin', '32', '26 avenue des Champs-Élysées, 75008 Paris', '0678901234', 'marie.martin@mail.com', '234567'),
 ('Pierre', 'Durand', '45', '2 rue de la Paix, 75001 Paris', '0687654321', 'pierre.durand@mail.com', '345678');
 
+-- TABLE ORDERS --
 DROP TABLE IF EXISTS `orders`;
-
 CREATE TABLE `orders` (
   `OrderId` int(11) NOT NULL AUTO_INCREMENT,
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -220,10 +220,12 @@ class Order{
         return $this;
     }
 
+    /**GET */
+
     public function findAll(){
         try{
             $pdo = Database::getPDO();
-            $sql = 'SELECT * FROM `order`';
+            $sql = 'SELECT * FROM `orders`';
             $query = $pdo->prepare($sql);
             $query->execute();
             $orders = $query->fetchAll(PDO::FETCH_OBJ);
@@ -296,4 +298,70 @@ class Order{
         }
         return $orders_coming;
     }
+
+    /** POST */
+
+    public function addNewOrder($data_array)
+{
+    try {
+        $pdo = Database::getPDO();
+        $pdo->beginTransaction();
+
+        $checkClientSql = "SELECT DriverId FROM driver WHERE firstname || ' ' || lastname = :name";
+        $checkClientStmt = $pdo->prepare($checkClientSql);
+        $checkClientStmt->bindValue(':name', $data_array['name']);
+        $checkClientStmt->execute();
+
+        $driverId = $checkClientStmt->fetchColumn();
+
+        if (!$driverId) {
+            $nameParts = explode(' ', $data_array['name']);
+            $data_array['firstname'] = isset($nameParts[0]) ? $nameParts[0] : '';
+            $data_array['lastname'] = isset($nameParts[1]) ? $nameParts[1] : '';
+            $data_array['age'] = isset($data_array['age']) ? $data_array['age'] : '';
+            $data_array['address'] = isset($data_array['address']) ? $data_array['address'] : '';
+            $data_array['phone'] = isset($data_array['phone']) ? $data_array['phone'] : '';
+            $data_array['mail'] = isset($data_array['mail']) ? $data_array['mail'] : '';
+            $data_array['licence_number'] = isset($data_array['licence_number']) ? $data_array['licence_number'] : '';
+
+            $createClientSql = "INSERT INTO driver (firstname, lastname, age, address, phone, mail, licence_number) 
+                                VALUES (:firstname, :lastname, :age, :address, :phone, :mail, :licence_number)";
+
+            $createClientStmt = $pdo->prepare($createClientSql);
+            $createClientStmt->bindValue(':firstname', $data_array['firstname']);
+            $createClientStmt->bindValue(':lastname', $data_array['lastname']);
+            $createClientStmt->bindValue(':age', $data_array['age']);
+            $createClientStmt->bindValue(':address', $data_array['address']);
+            $createClientStmt->bindValue(':phone', $data_array['phone']);
+            $createClientStmt->bindValue(':mail', $data_array['mail']);
+            $createClientStmt->bindValue(':licence_number', $data_array['licence_number']);
+            $createClientStmt->execute();
+
+            $driverId = $pdo->lastInsertId();
+        }
+
+        $sql = "INSERT INTO `orders` (rent_start, rent_end, km_start, km_end, comments, status, DriverId, CarsId) 
+                VALUES (:rent_start, :rent_end, :km_start, :km_end, :comments, :status, :DriverId, :cars)";
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindValue(':rent_start', $data_array['start_date']);
+        $stmt->bindValue(':rent_end', $data_array['end_date']);
+        $stmt->bindValue(':km_start', $data_array['km_start']);
+        $stmt->bindValue(':km_end', $data_array['km_end']);
+        $stmt->bindValue(':comments', $data_array['comments']);
+        $stmt->bindValue(':status', 1);
+        $stmt->bindValue(':DriverId', $driverId);
+        $stmt->bindValue(':cars', $data_array['cars']);
+
+        $stmt->execute();
+
+        $pdo->commit();
+        return true;
+    } catch (PDOException $e) {
+        $pdo->rollBack();
+        echo 'Erreur : ' . $e->getMessage();
+        return false;
+    }
+}
+
 }

@@ -2,6 +2,10 @@
 
 $controllersNamespace = '\App\controllers\\';
 
+/**
+ * GET
+ */
+
 $router->map(
     'GET', 
     '/',
@@ -21,6 +25,16 @@ $router->map(
     ],
     'cars'
   );
+
+  $router->map(
+    'GET', 
+    '/order_new',
+    [
+      'method'      => 'NewOrder',
+      'controller'  => $controllersNamespace . 'OrderController'
+    ],
+    'order_new'
+);
   
   $router->map(
       'GET', 
@@ -69,4 +83,18 @@ $router->map(
       'controller'  => $controllersNamespace . 'MainController'
     ],
     'available'
+);
+
+/**
+ * POST
+ */
+
+ $router->map(
+  'POST', 
+  '/order_new',
+  [
+    'method'      => 'NewOrder',
+    'controller'  => $controllersNamespace . 'OrderController'
+  ],
+  'order_new_post'
 );
