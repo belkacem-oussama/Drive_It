@@ -35,7 +35,7 @@ class Database
             exit;
         }
     }
-    
+
     public static function getPDO()
     {
         if (empty(self::$_instance)) {
