@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($orders_current as $order_current) { ?>
+    <?php foreach ($orders_current as $order_current) { ?>
       <tr>
         <td class="hidden-phone"><?=$order_current->dateStart ?></td>
         <td class="hidden-phone"><?= $order_current->dateEnd ?></td>
@@ -23,7 +23,7 @@
           <td class="hidden-phone"><?=$order_current->brand ?> <?=$order_current->model ?></td>
           <td class="hidden-phone"><?=$order_current->km_start ?> km</td>
       </tr>
-      <?php } ?>
+    <?php } ?>
     </tbody>
   </table>
 </div>

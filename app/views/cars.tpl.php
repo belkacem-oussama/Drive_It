@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-start align-content-around flex-wrap">
-<?php foreach($cars as $car){?>
+  <?php foreach($cars as $car){?>
     <div class="card p-2 m-2" style="width: 15rem;">
       <div class="card-body">
         <h5 class="card-title"><?=$car->brand?> <?= $car->model ?></h5>
@@ -10,5 +10,5 @@
         <a href="#" class="btn btn-primary">Infos</a>
       </div>
     </div>
-    <?php }?>
+  <?php }?>
   </div>

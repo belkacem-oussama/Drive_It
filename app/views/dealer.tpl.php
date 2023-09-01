@@ -15,6 +15,6 @@
         <td><?= $dealer->contact_name?></td>
         <td><?= $dealer->phone?></td>
     </tr>
-    <?php } ?>
+  <?php } ?>
   </tbody>
 </table>
