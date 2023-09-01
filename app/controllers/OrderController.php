@@ -37,10 +37,10 @@ class OrderController extends CoreController{
 
         
         $data_array = [
-            'cars' => filter_input(INPUT_POST, 'cars', FILTER_SANITIZE_STRING),
-            'start_date' => filter_input(INPUT_POST, 'start_date', FILTER_SANITIZE_STRING),
-            'end_date' => filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_STRING),
-            'name' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING),
+            'cars' => filter_input(INPUT_POST, 'cars', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'start_date' => filter_input(INPUT_POST, 'start_date', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'end_date' => filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'name' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
         ];
 
         $errorList = [];
