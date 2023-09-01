@@ -35,22 +35,13 @@ class OrderController extends CoreController{
     $car_list = new Cars;
     $cars_list = $car_list->FindAll();
 
-    $drivers = new Driver;
-    $drivers_list = $drivers->findAll();
-
-
-    $data_array = [
-        'cars' => $_POST['cars'] ?? '',
-        'start_date' => $_POST['start_date'] ?? '',
-        'end_date' => $_POST['end_date'] ?? '',
-        'name' => $_POST['name'] ?? '',
-        'km_start' => $_POST['km_start'] ?? '',
-        'km_end' => $_POST['km_end'] ?? '',
-        'comments' => $_POST['comments'] ?? '',
-        'status' => $_POST['status'] ?? '',
-        'DriverId' => $_POST['DriverId'] ?? '',
-        'CarsId' => $_POST['cars_id'] ?? '',
-    ];
+        
+        $data_array = [
+            'cars' => $_POST['cars'] ?? '',
+            'start_date' => $_POST['start_date'] ?? '',
+            'end_date' => $_POST['end_date'] ?? '',
+            'name' => $_POST['name'] ?? '',
+        ];
 
     $errorList = [];
 
