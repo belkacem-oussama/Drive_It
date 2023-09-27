@@ -10,8 +10,8 @@ $router->map(
     'GET', 
     '/',
     [
-      'method'      => 'home',
-      'controller'  => $controllersNamespace . 'MainController'
+      'method'      => 'showHome',
+      'controller'  => $controllersNamespace . 'HomeController'
     ],
     'home'
 );
