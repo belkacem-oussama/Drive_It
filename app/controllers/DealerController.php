@@ -4,11 +4,13 @@ namespace App\controllers;
 
 use App\models\Dealer;
 
-class DealerController extends CoreController{
+class DealerController extends CoreController
+{
 
-    public function showDealers(){
+    public function showDealers()
+    {
         $dealer = new Dealer;
         $dealers = $dealer->findDealers();
-        $this->show('dealer',['dealers'=>$dealers]);
+        $this->show('dealer', ['dealers' => $dealers]);
     }
 }

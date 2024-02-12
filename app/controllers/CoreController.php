@@ -2,8 +2,10 @@
 
 namespace App\controllers;
 
-class CoreController{
-    protected function show($viewName, $viewData = []) {
+class CoreController
+{
+    protected function show($viewName, $viewData = [])
+    {
         global $router;
 
         $absoluteURL = $_SERVER['BASE_URI'];

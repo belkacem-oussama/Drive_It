@@ -8,13 +8,13 @@
     </tr>
   </thead>
   <tbody>
-  <?php foreach ($dealers as $dealer) { ?>
-    <tr>
-        <td><?= $dealer->DealerId?></td>
-        <td><?= $dealer->brand?></td>
-        <td><?= $dealer->contact_name?></td>
-        <td><?= $dealer->phone?></td>
-    </tr>
-  <?php } ?>
+    <?php foreach ($dealers as $dealer) { ?>
+      <tr>
+        <td><?= $dealer->DealerId ?></td>
+        <td><?= $dealer->brand ?></td>
+        <td><?= $dealer->contact_name ?></td>
+        <td><?= $dealer->phone ?></td>
+      </tr>
+    <?php } ?>
   </tbody>
 </table>

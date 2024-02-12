@@ -31,7 +31,7 @@
     <select class="form-control" id="inputName" name="name" required>
       <option value="cars">Sélectionnez un client</option>
       <?php foreach ($drivers_list as $driver) { ?>
-        <option><?= $driver->firstname.' '. $driver->lastname ?></option>
+        <option><?= $driver->firstname . ' ' . $driver->lastname ?></option>
       <?php } ?>
     </select>
   </div>

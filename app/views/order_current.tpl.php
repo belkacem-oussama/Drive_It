@@ -11,19 +11,19 @@
       </tr>
     </thead>
     <tbody>
-    <?php foreach ($orders_current as $order_current) { ?>
-      <tr>
-        <td class="hidden-phone"><?=$order_current->dateStart ?></td>
-        <td class="hidden-phone"><?= $order_current->dateEnd ?></td>
-        <td class="hidden-phone">
-          <span class="label label-info"><?= $order_current->location_duration_days ?> jours</span>
+      <?php foreach ($orders_current as $order_current) { ?>
+        <tr>
+          <td class="hidden-phone"><?= $order_current->dateStart ?></td>
+          <td class="hidden-phone"><?= $order_current->dateEnd ?></td>
+          <td class="hidden-phone">
+            <span class="label label-info"><?= $order_current->location_duration_days ?> jours</span>
           <td>
-            <span class="name"><?= $order_current->firstname?> <?= $order_current->lastname ?></span>
+            <span class="name"><?= $order_current->firstname ?> <?= $order_current->lastname ?></span>
           </td>
-          <td class="hidden-phone"><?=$order_current->brand ?> <?=$order_current->model ?></td>
-          <td class="hidden-phone"><?=$order_current->km_start ?> km</td>
-      </tr>
-    <?php } ?>
+          <td class="hidden-phone"><?= $order_current->brand ?> <?= $order_current->model ?></td>
+          <td class="hidden-phone"><?= $order_current->km_start ?> km</td>
+        </tr>
+      <?php } ?>
     </tbody>
   </table>
 </div>

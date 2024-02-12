@@ -13,7 +13,7 @@ class Database
     private function __construct()
     {
         $configData = parse_ini_file(__DIR__ . '/config.ini');
-        
+
         $host = $configData['DB_HOST'];
         $dbname = $configData['DB_USERNAME'];
         $username = $configData['DB_PASSWORD'];

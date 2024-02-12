@@ -14,9 +14,9 @@
         <td class="hidden-phone">yo</td>
         <td class="hidden-phone">
           <span class="label label-info">jours</span>
-          <td>
-            <span class="name">yu</span>
-          </td>
+        <td>
+          <span class="name">yu</span>
+        </td>
       </tr>
     </tbody>
   </table>

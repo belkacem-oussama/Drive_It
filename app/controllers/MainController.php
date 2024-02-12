@@ -2,37 +2,45 @@
 
 namespace App\controllers;
 
-class MainController extends CoreController{
-    public function home(){
+class MainController extends CoreController
+{
+    public function home()
+    {
         $this->show('home');
     }
 
-    public function cars(){
+    public function cars()
+    {
         $this->show('cars');
     }
 
-    public function dealer(){
+    public function dealer()
+    {
         $this->show('dealer');
     }
 
-    public function available(){
+    public function available()
+    {
         $this->show('available');
     }
 
-    public function order_current(){
+    public function order_current()
+    {
         $this->show('order_current');
     }
 
-    public function order_to_come(){
+    public function order_to_come()
+    {
         $this->show('order_coming');
     }
 
-    public function order_finish(){
+    public function order_finish()
+    {
         $this->show('order_finish');
-    } 
-
-    public function pageNotFound() {
-        $this->show('404');
     }
 
+    public function pageNotFound()
+    {
+        $this->show('404');
+    }
 }

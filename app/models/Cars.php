@@ -1,11 +1,13 @@
 <?php
 
 namespace App\models;
+
 use App\Utils\Database;
 
 use PDO;
 
-class Cars{
+class Cars
+{
     private $id;
     private $registration;
     private $brand;
@@ -15,11 +17,11 @@ class Cars{
     private $caution;
     private $price;
     private $availability;
-    
+
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -29,7 +31,7 @@ class Cars{
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -39,7 +41,7 @@ class Cars{
 
     /**
      * Get the value of registration
-     */ 
+     */
     public function getRegistration()
     {
         return $this->registration;
@@ -49,7 +51,7 @@ class Cars{
      * Set the value of registration
      *
      * @return  self
-     */ 
+     */
     public function setRegistration($registration)
     {
         $this->registration = $registration;
@@ -59,7 +61,7 @@ class Cars{
 
     /**
      * Get the value of brand
-     */ 
+     */
     public function getBrand()
     {
         return $this->brand;
@@ -69,7 +71,7 @@ class Cars{
      * Set the value of brand
      *
      * @return  self
-     */ 
+     */
     public function setBrand($brand)
     {
         $this->brand = $brand;
@@ -79,7 +81,7 @@ class Cars{
 
     /**
      * Get the value of model
-     */ 
+     */
     public function getModel()
     {
         return $this->model;
@@ -89,7 +91,7 @@ class Cars{
      * Set the value of model
      *
      * @return  self
-     */ 
+     */
     public function setModel($model)
     {
         $this->model = $model;
@@ -99,7 +101,7 @@ class Cars{
 
     /**
      * Get the value of year
-     */ 
+     */
     public function getYear()
     {
         return $this->year;
@@ -109,7 +111,7 @@ class Cars{
      * Set the value of year
      *
      * @return  self
-     */ 
+     */
     public function setYear($year)
     {
         $this->year = $year;
@@ -119,7 +121,7 @@ class Cars{
 
     /**
      * Get the value of power
-     */ 
+     */
     public function getPower()
     {
         return $this->power;
@@ -129,17 +131,17 @@ class Cars{
      * Set the value of power
      *
      * @return  self
-     */ 
+     */
     public function setPower($power)
     {
         $this->power = $power;
 
         return $this;
     }
-    
+
     /**
      * Get the value of caution
-     */ 
+     */
     public function getCaution()
     {
         return $this->caution;
@@ -149,7 +151,7 @@ class Cars{
      * Set the value of caution
      *
      * @return  self
-     */ 
+     */
     public function setCaution($caution)
     {
         $this->caution = $caution;
@@ -159,7 +161,7 @@ class Cars{
 
     /**
      * Get the value of price
-     */ 
+     */
     public function getPrice()
     {
         return $this->price;
@@ -169,7 +171,7 @@ class Cars{
      * Set the value of price
      *
      * @return  self
-     */ 
+     */
     public function setPrice($price)
     {
         $this->price = $price;
@@ -179,7 +181,7 @@ class Cars{
 
     /**
      * Get the value of availability
-     */ 
+     */
     public function getAvailability()
     {
         return $this->availability;
@@ -189,7 +191,7 @@ class Cars{
      * Set the value of availability
      *
      * @return  self
-     */ 
+     */
     public function setAvailability($availability)
     {
         $this->availability = $availability;
@@ -197,18 +199,18 @@ class Cars{
         return $this;
     }
 
-    public function findAll(){
-        try{
+    public function findAll()
+    {
+        try {
             $pdo = Database::getPDO();
             $sql = 'SELECT * from `cars`';
             $query =  $pdo->prepare($sql);
             $query->execute();
             $cars = $query->fetchAll(PDO::FETCH_OBJ);
-        }catch(PDOException $e){
-            echo 'Erreur : '.$e->getMessage();
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
         }
 
         return $cars;
     }
-
 }
